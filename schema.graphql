@@ -1,0 +1,35 @@
+enum TopicName {
+  SCIENCE
+  MATH
+  HISTORY
+  SOCIAL
+  FOOD
+}
+
+type Topic {
+  id: ID!
+  name: TopicName!
+}
+
+type User {
+  id: ID!
+  firstName: String
+  lastName: String
+  avatar: String
+}
+
+type Post {
+  id: ID!
+  title: String
+  body: String
+  topics: [Topic]!
+  author: User!
+}
+
+type Query {
+  fetchFeed(limit: Int): [Post]!
+}
+
+schema {
+  query: Query
+}
